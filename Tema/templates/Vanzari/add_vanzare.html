@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Adaugă clienți</title>
+    <style>
+        .form-control {width: 30%;}
+        .desc {font-size: 23px;}
+    </style>
+{% endblock %}
+
+{%  block content %}
+    <div id="Adauga clienti" class="tabcontent">
+	<center>
+  		<h1 id="h3">Adaugă vânzări</h1>
+  		<br>
+        <p style="color: ghostwhite; font-size: 23px">{{ error }}</p>
+        <form class="was-validated" method="POST" action="/add_vanzare">
+        <div class="row">
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Nr.card: </label>
+                    <input name="nr_card" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. 10 " required>
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Produs: </label> <br>
+                    <select name="id_produs" class="custom-select d-block my-3">
+                    <option value="">Alege produs &#9679;</option>
+                         {% for produs in produse %}
+                             <option value={{produs['id_produs']}}>{{produs['denumire_produs']}}</option>
+                         {% endfor %}
+                    </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Cantitate: </label>
+                    <input name="cantitate" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. 2">
+              </div>
+        </div><br>
+        <button class="btn btn-primary" type="submit">Adaugă vânzare</button>
+      </form>
+	  </center>
+</div>
+{% endblock %}

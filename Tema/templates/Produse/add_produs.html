@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Adaugă produse</title>
+    <style>
+        .form-control {width: 30%;}
+        .desc {font-size: 23px;}
+    </style>
+{% endblock %}
+
+{%  block content %}
+    <div id="Adauga clienti" class="tabcontent">
+	<center>
+        <br>
+  		<h1 id="h3">Adaugă produse</h1>
+  		<br>
+        <p style="color: ghostwhite; font-size: 23px">{{ error }}</p>
+        <form class="was-validated" method="POST" action="/add_produs">
+        <div class="row">
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Denumire produs: </label>
+                    <input name="denumire_produs" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. Hrană uscată " required>
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Stoc: </label>
+                    <input name="stoc" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. 50">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Preț: </label>
+                    <input name="pret" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. 12.0">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Unitate de măsură: </label> <br>
+                    <select name="um" class="custom-select d-block my-3">
+                    <option value="">Alege unitatea de măsură &#9679;</option>
+                        <option value="buc"> buc </option>
+                        <option value="g"> g </option>
+                        <option value="kg"> kg </option>
+                        <option value="L"> L </option>
+                        <option value="mL"> mL </option>
+                    </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Furnizor: </label> <br>
+                    <select name="id_furnizor" class="custom-select d-block my-3">
+                    <option value="">Alege furnizor &#9679;</option>
+                         {% for furnizor in furnizori %}
+                             <option value={{furnizor['id_furnizor']}}>{{furnizor['denumire_furnizor']}}</option>
+                         {% endfor %}
+                    </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Categorie animale: </label> <br>
+                    <select name="id_categorie" class="custom-select d-block my-3">
+                    <option value="">Alege categorie &#9679;</option>
+                         {% for categorie in categorii_animale %}
+                             <option value={{categorie['id_categorie']}}>{{categorie['denumire_categorie']}}</option>
+                         {% endfor %}
+                    </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Tipul produsului: </label> <br>
+                    <select name="id_tip" class="custom-select d-block my-3">
+                    <option value="">Alege tip &#9679;</option>
+                         {% for tip in tipuri_produse %}
+                             <option value={{tip['id_tip']}}>{{tip['denumire_tip']}}</option>
+                         {% endfor %}
+                    </select>
+              </div>
+
+        </div>
+            <br>
+        <button class="btn btn-primary" type="submit">Adaugă produs</button>
+      </form>
+	  </center>
+</div>
+{% endblock %}

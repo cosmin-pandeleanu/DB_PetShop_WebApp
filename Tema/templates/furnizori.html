@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Furnizori</title>
+{% endblock %}
+
+{% block content %}
+    <div id="Furnizori" class="tabcontent">
+	<center>
+		  <br>
+  		<h1 id="h3">Furnizori</h1>
+  		<br>
+  		<table style="width:70%">
+		<br><br>
+  			<tr>
+    			<th><i><b>ID furnizor</b></i> </th>
+    			<th><i><b>Denumire furnizor</b></i> </th>
+			</tr>
+			{% for furnizor in furnizori %}
+  			<tr>
+    			<td>{{furnizor['id_furnizor']}}</td>
+    			<td>{{furnizor['denumire_furnizor']}}</td>
+			</tr>
+  			{% endfor %}
+		  </table>
+	  </center>
+</div>
+{% endblock %}

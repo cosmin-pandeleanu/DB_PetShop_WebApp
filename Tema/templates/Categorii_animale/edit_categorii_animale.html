@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Editează clienți</title>
+    <style>
+        .desc {font-size: 23px;}
+    </style>
+{% endblock %}
+
+{%  block content %}
+    <div id="Editeaza clienti" class="tabcontent">
+	<center>
+        <br>
+  		<h1 id="h3">Editeză categoriile de animale</h1>
+  		<br>
+        <form class="was-validated" method="POST" action="/edit_categorie">
+        <div class="row">
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Denumire categorie</label>
+                    <input name="denumire_categorie" type="text" class="form-control is-valid" id="validationServer01" value="{{ denumire_categorie }}">
+              </div>
+        </div>
+            <br>
+        <button class="btn btn-primary" type="submit">Editează categorie</button>
+      </form>
+	  </center>
+</div>
+{% endblock %}

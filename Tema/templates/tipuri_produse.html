@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Tipuri produse</title>
+{% endblock %}
+
+{%  block content %}
+    <div id="Tipuri_produse" class="tabcontent">
+	<center>
+		  <br>
+  		<h1 id="h3">Tipuri Produse</h1>
+  		<br>
+  		<table style="width:70%">
+		<br><br>
+  			<tr>
+    			<th><i><b>ID tip</b></i> </th>
+    			<th><i><b>Denumire tip</b></i> </th>
+			</tr>
+			{% for tip in tipuri_produse %}
+  			<tr>
+    			<td>{{tip['id_tip']}}</td>
+    			<td>{{tip['denumire_tip']}}</td>
+			</tr>
+  			{% endfor %}
+		  </table>
+	  </center>
+</div>
+{% endblock %}

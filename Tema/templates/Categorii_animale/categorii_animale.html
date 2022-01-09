@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Categorii animale</title>
+{% endblock %}
+
+{%  block content %}
+    <div id="Categorii_animale" class="tabcontent">
+	<center>
+		  <br>
+  		<h1 id="h3">Categorii animale</h1>
+  		<br>
+  		<table style="width:70%">
+		<br><br>
+  			<tr>
+    			<th><i><b>ID categorie</b></i> </th>
+    			<th><i><b>Denumire categorie</b></i></th>
+				<th><i><b>Action</b></i></th>
+			</tr>
+			{% for categorie in categorii %}
+  			<tr>
+    			<td>{{categorie['id_categorie']}}</td>
+    			<td>{{categorie['denumire_categorie']}}</td>
+                <td>
+                    <form class="was-validated" method="POST" action="/get_categorie">
+                        <button type="submit" name="id_categorie" value="{{categorie['id_categorie']}}" class="btn-simple">Editează</button>
+                    </form></td>
+                </td>
+			</tr>
+  			{% endfor %}
+		  </table>
+	  </center>
+</div>
+{% endblock %}

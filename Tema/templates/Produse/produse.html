@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block head_content %}
+    <title>Produse</title>
+{% endblock %}
+{%  block content %}
+    <div id="Produse" class="tabcontent">
+	<center>
+		  <br>
+  		<h1 id="h3">Produse</h1>
+  		<br>
+        <p style="color: ghostwhite; font-size: 23px">{{ error }}</p>
+        <div class="btn-group">
+            <a href="add_produs"><button type="button" class="btn btn-primary">Adaugă produse</button></a>
+        </div>
+  		<table style="width:70%">
+		<br><br>
+  			<tr>
+    			<th><i><b>ID produs</b></i> </th>
+    			<th><i><b>Denumire produs</b></i> </th>
+    			<th><i><b>Stoc</b></i> </th>
+    			<th><i><b>Preț</b></i> </th>
+    			<th><i><b>U.M.</b></i> </th>
+    			<th><i><b>Tip</b></i> </th>
+    			<th><i><b>Furnizor</b></i> </th>
+    			<th><i><b>Categorie</b></i> </th>
+			</tr>
+			{% for produs in produse %}
+  			<tr>
+    			<td>{{produs['id_produs']}}</td>
+    			<td>{{produs['denumire_produs']}}</td>
+    			<td>{{produs['stoc']}}</td>
+    			<td>{{produs['pret']}}</td>
+    			<td>{{produs['um']}}</td>
+    			<td>{{produs['tip']}}</td>
+    			<td>{{produs['furnizor']}}</td>
+    			<td>{{produs['categorie']}}</td>
+			</tr>
+  			{% endfor %}
+		  </table>
+	  </center>
+</div>
+{% endblock %}

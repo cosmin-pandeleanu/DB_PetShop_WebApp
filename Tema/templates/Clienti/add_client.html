@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Adaugă clienți</title>
+    <style>
+        .desc {font-size: 23px;}
+    </style>
+{% endblock %}
+
+{%  block content %}
+    <div id="Adauga clienti" class="tabcontent">
+	<center>
+        <br>
+  		<h1 id="h3">Adaugă clienți</h1>
+  		<br>
+        <p style="color: ghostwhite; font-size: 23px">{{ error }}</p>
+        <form class="was-validated" method="POST" action="/add_client">
+        <div class="row">
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Nume și prenume</label>
+                    <input name="nume_client" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. Popescu " required>
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">E-mail</label>
+                    <input name="email" type="email" class="form-control is-valid" id="validationServer01" placeholder="ex. popescu.ion@gmail.com">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Data nașterii</label>
+                    <input name="data_nasterii" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. 12.02.1998">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Gen</label>
+                    <input name="gen" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. M/F">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Oraș</label>
+                    <input name="oras" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. Iași">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Adresă</label>
+                    <input name="adresa" type="text" class="form-control is-valid" id="validationServer01" placeholder="ex. str. Ștefan cel Mare, 23">
+              </div>
+        </div>
+            <br>
+        <button class="btn btn-primary" type="submit">Adaugă client</button>
+      </form>
+	  </center>
+</div>
+{% endblock %}

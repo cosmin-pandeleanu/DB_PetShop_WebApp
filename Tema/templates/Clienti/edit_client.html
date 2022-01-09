@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Editează clienți</title>
+    <style>
+        .desc {font-size: 23px;}
+    </style>
+{% endblock %}
+
+{%  block content %}
+    <div id="Editeaza clienti" class="tabcontent">
+	<center>
+        <br>
+  		<h1 id="h3">Editeză informațiile clienților</h1>
+  		<br>
+        <p style="color: ghostwhite; font-size: 23px">{{ error }}</p>
+        <form class="was-validated" method="POST" action="/edit_client">
+        <div class="row">
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Nume și prenume</label>
+                    <input name="nume_client" type="text" class="form-control is-valid" id="validationServer01" value="{{ client['nume_client'] }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">E-mail</label>
+                    <input name="email" type="text" class="form-control is-valid" id="validationServer01" value="{{ client['email'] }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Data nașterii</label>
+                    <input name="data_nasterii" type="text" class="form-control is-valid" id="validationServer01" value="{{ client['data_nasterii'] }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Gen</label>
+                    <input name="gen" type="text" class="form-control is-valid" id="validationServer01" value="{{ client['gen'] }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Oraș</label>
+                    <input name="oras" type="text" class="form-control is-valid" id="validationServer01" value="{{ client['oras'] }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                    <label class="desc" for="validationServer01">Adresă</label>
+                    <input name="adresa" type="text" class="form-control is-valid" id="validationServer01" value="{{ client['adresa'] }}">
+              </div>
+        </div>
+            <br>
+        <button class="btn btn-primary" type="submit">Editează client</button>
+      </form>
+	  </center>
+</div>
+{% endblock %}

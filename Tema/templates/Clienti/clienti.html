@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Clienți</title>
+{% endblock %}
+
+{%  block content %}
+    <div id="Clienti" class="tabcontent">
+	<center>
+  		<h1 id="h3">Clienți</h1>
+  		<br>
+        <p style="color: ghostwhite; font-size: 23px">{{ error }}</p>
+        <div class="btn-group">
+            <a href="add_client"><button type="button" class="btn btn-primary">Adaugă clienți</button></a>
+        </div>
+  		<table style="width:70%">
+		<br><br>
+  			<tr>
+    			<th><i><b>Nr.card</b></i> </th>
+    			<th><i><b>Nume client</b></i></th>
+    			<th><i><b>Adresă de e-mail</b></i></th>
+    			<th><i><b>Data nașterii</b></i></th>
+    			<th><i><b>Gen</b></i></th>
+    			<th><i><b>Oraș</b></i></th>
+    			<th><i><b>Adresă</b></i></th>
+    			<th colspan="2"><u><b>Acțiuni</b></u></th>
+			</tr>
+			{% for client in clienti %}
+  			<tr>
+    			<td>{{client['nr_card']}}</td>
+    			<td>{{client['nume_client']}}</td>
+    			<td>{{client['email']}}</td>
+    			<td>{{client['data_nasterii']}}</td>
+    			<td>{{client['gen']}}</td>
+    			<td>{{client['oras']}}</td>
+    			<td>{{client['adresa']}}</td>
+                <td>
+                    <form class="was-validated" method="POST" action="/get_client">
+                        <button type="submit" name="nr_card" value="{{client['nr_card']}}" class="btn-simple">Editează client</button>
+                    </form></td>
+                <td>
+                    <form class="was-validated" method="POST" action="/delete_client">
+                        <button type="submit" name="nr_card" value="{{client['nr_card']}}" class="btn-simple">Șterge client</button>
+                    </form></td>
+			</tr>
+  			{% endfor %}
+		  </table>
+	  </center>
+</div>
+{% endblock %}

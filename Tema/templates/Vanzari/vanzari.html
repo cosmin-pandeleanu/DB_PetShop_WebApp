@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Vânzări</title>
+{% endblock %}
+
+{%  block content %}
+    <div id="Vanzari" class="tabcontent">
+	<center>
+  		<h1 id="h3">Vânzări</h1>
+  		<br>
+        <div class="btn-group">
+            <a href="add_vanzare"><button type="button" class="btn btn-primary">Adaugă vânzare</button></a>
+        </div>
+  		<table style="width:70%">
+		<br>
+  			<tr>
+    			<th><i><b>Nr.bon</b></i> </th>
+    			<th><i><b>Nr.card</b></i> </th>
+                <th><i><b>Data achiziției</b></i> </th>
+                <th><i><b>Id_produs</b></i> </th>
+                <th><i><b>Denumire produs</b></i> </th>
+    			<th><i><b>Cantitate</b></i> </th>
+    			<th><i><b>U.M.</b></i> </th>
+    			<th><i><b>Preț</b></i> </th>
+    			<th><i><b>Preț plătit</b></i> </th>
+			</tr>
+			{% for vanzare in vanzari %}
+  			<tr>
+    			<td>{{vanzare['nr_bon']}}</td>
+    			<td>{{vanzare['nr_card']}}</td>
+                <td>{{vanzare['data_achizitiei']}}</td>
+    			<td>{{vanzare['id_produs']}}</td>
+    			<td>{{vanzare['denumire_produs']}}</td>
+                <td>{{vanzare['cantitate']}}</td>
+                <td>{{vanzare['um']}}</td>
+    			<td>{{vanzare['pret']}} lei </td>
+    			<td>{{vanzare['cantitate']*vanzare['pret']}} lei </td>
+			</tr>
+  			{% endfor %}
+		  </table>
+	  </center>
+</div>
+{% endblock %}
