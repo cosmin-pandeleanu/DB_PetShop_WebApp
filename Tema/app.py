@@ -89,7 +89,6 @@ def delete_client():
         print("Something went wrong: {}".format(err), file=sys.stderr)
         return render_template('Clienti/clienti.html', error=err)
 
-
 ###-------------------------------------------- EDITEAZA CLIENTI ----------------------------------------------------###
 @app.route('/edit_client', methods=['GET', 'POST'])
 def edit_client():
@@ -114,8 +113,8 @@ def edit_client():
             values.append("'" + request.form['adresa'] + "'")
             fields = ['email', 'data_nasterii', 'gen', 'oras', 'adresa']
             query = "UPDATE detalii_clienti SET %s=%s, %s=%s, %s=%s, %s=%s, %s=%s WHERE nr_card = %s" %(
-                fields[0], values[0], fields[1], values[1],fields[2], values[2], fields[3],values[3], fields[4], values[4], str(_nr_card))
-            print(query, file=sys.stderr)
+                fields[0], values[0], fields[1], values[1],fields[2], values[2], fields[3],values[3], fields[4],
+                values[4], str(_nr_card))
             cursor.execute(query)
             cursor.execute('commit')
             cursor.close()
@@ -211,6 +210,29 @@ def add_produs():
         return render_template('Produse/produse.html', error=err)
     return render_template('Produse/add_produs.html', furnizori=furnizori, categorii_animale=categorii_animale, tipuri_produse=tipuri_produse)
 
+###----------------------------------------- APROVIZIONARE PRODUSE --------------------------------------------------###
+@app.route('/add_stoc_produs', methods=['GET', 'POST'])
+def add_stoc_produs():
+    try:
+        produse_ = []
+        cursor = conn.cursor()
+        cursor.execute('SELECT id_produs, denumire_produs FROM produse ORDER BY id_produs')
+        for result in cursor:
+            produs = {'id_produs': result[0], 'denumire_produs': result[1]}
+            produse_.append(produs)
+        cursor.close()
+
+        if request.method == 'POST':
+            cursor = conn.cursor()
+            query = 'UPDATE produse SET stoc = stoc+%s WHERE id_produs = %s' % (request.form['cantitate'], request.form['id_produs'])
+            cursor.execute(query)
+            cursor.execute('commit')
+            cursor.close()
+            return redirect('/produse')
+    except Exception as err:
+        print("Something went wrong: {}".format(err), file=sys.stderr)
+        return render_template('Produse/add_stoc_produs.html', produse=produse_, error=err)
+    return render_template('Produse/add_stoc_produs.html', produse=produse_)
 
 ###--------------------------------------------------- VANZARI ------------------------------------------------------###
 @app.route('/vanzari')
